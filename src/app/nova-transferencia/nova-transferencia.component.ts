@@ -22,7 +22,7 @@ export class NovaTransferenciaComponent  {
     this.limparFormulario()
   }
 
-  private limparFormulario(){
+  limparFormulario(){
     this.destino = 0;
     this.valor = 0;
   }

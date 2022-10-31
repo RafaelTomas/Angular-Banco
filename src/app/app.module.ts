@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MenuComponent } from './menu/menu.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import { HttpClientModule } from '@angular/common/http';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -18,14 +17,21 @@ import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
 import { NovaTransferenciaComponent } from './nova-transferencia/nova-transferencia.component';
 import { FormsModule } from '@angular/forms';
+import { ExtratoComponent } from './extrato/extrato.component';
+import { SidenavComponent } from './sidenav/sidenav.component';
+import { BodyComponent } from './body/body.component';
+import { VacinaService } from './service/vacinaService.service';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    MenuComponent,
+    SidenavComponent,
     DashboardComponent,
     NovaTransferenciaComponent,
+    ExtratoComponent,
+    SidenavComponent,
+    BodyComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,7 +49,7 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     FormsModule,
   ],
-  providers: [],
+  providers: [VacinaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
