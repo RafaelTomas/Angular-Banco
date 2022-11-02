@@ -1,9 +1,5 @@
+import { TransferenciasService } from './service/transferencias.service';
 import { Component } from '@angular/core';
-
-interface SideNavToggle {
-  screenWidth: number;
-  collapsed: boolean;
-}
 
 @Component({
   selector: 'app-root',
@@ -11,19 +7,12 @@ interface SideNavToggle {
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'dashboard';
-  transferencias: any[] = [] ;
-  menuFechado = false;
-  screenWidth = 0;
+  title = 'Banco';
+
+  constructor(private service: TransferenciasService){}
 
   transferir($event){
-    console.log($event)
-    const transferencia = { ...$event, data: new Date().toLocaleDateString('pt-Br')};
-    this.transferencias.push(transferencia);
+    this.service.adicionar($event);
   }
 
-  barraMenu(data: SideNavToggle): void {
-    this.screenWidth = data.screenWidth;
-    this.menuFechado = data.collapsed
-  }
 }

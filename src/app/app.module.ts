@@ -1,55 +1,35 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { DEFAULT_CURRENCY_CODE, LOCALE_ID, NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatButtonModule } from '@angular/material/button';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatIconModule } from '@angular/material/icon';
-import { MatListModule } from '@angular/material/list';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { MatGridListModule } from '@angular/material/grid-list';
-import { MatCardModule } from '@angular/material/card';
-import { MatMenuModule } from '@angular/material/menu';
-import { NovaTransferenciaComponent } from './nova-transferencia/nova-transferencia.component';
+import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { ExtratoComponent } from './extrato/extrato.component';
-import { SidenavComponent } from './sidenav/sidenav.component';
-import { BodyComponent } from './body/body.component';
-import { VacinaService } from './service/vacinaService.service';
+
+import { registerLocaleData } from '@angular/common';
+import localePt from '@angular/common/locales/pt'
+
+import { NovaTransferenciaComponent } from './components/nova-transferencia/nova-transferencia.component';
+import { AppComponent } from './app.component';
+import { ExtratoComponent } from './components/extrato/extrato.component';
+import { AppRoutingModule } from './app-routing.module';
 
 
+
+registerLocaleData(localePt, 'pt');
 @NgModule({
   declarations: [
     AppComponent,
-    SidenavComponent,
-    DashboardComponent,
     NovaTransferenciaComponent,
     ExtratoComponent,
-    SidenavComponent,
-    BodyComponent,
   ],
   imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    LayoutModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatListModule,
-    MatGridListModule,
-    MatCardModule,
-    MatMenuModule,
     HttpClientModule,
+    BrowserModule,
     FormsModule,
+    AppRoutingModule,
   ],
-  providers: [VacinaService],
+  providers: [
+    { provide: LOCALE_ID, useValue: 'pt' },
+    { provide: DEFAULT_CURRENCY_CODE, useValue: 'BRL' },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
